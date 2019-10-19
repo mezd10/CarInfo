@@ -1,0 +1,5 @@
+host: localhost
+database: car
+port: 5432
+login: postgres
+password: 12345
