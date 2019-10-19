@@ -3,7 +3,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
-
+import static java.lang.System.in;
 
 
 public class Menu {
@@ -16,8 +16,9 @@ public class Menu {
         System.out.println("Enter code:" +
                 " \n 1. Search. " +
                 " \n 2. Insert. " +
-                " \n 3. Update. "+
-                " \n 4. Exit.\n  ");
+                " \n 3. Update. " +
+                " \n 4. Delete. "+
+                " \n 5. Exit.\n  ");
 
         int result = checkValidation(scanner);
         try {
@@ -40,6 +41,11 @@ public class Menu {
                     }
                     break;
                 case 4:
+                    while (info.getStatus().equals("ok") || info.getStatus().equals("fail")) {
+                        info.infoDelete(scanner);
+                    }
+                    break;
+                case 5:
                     databaseProvider.disconnect();
                     exit(0);
                     break;

@@ -7,9 +7,9 @@ public class Info {
     private String status = "ok";
 
 
-    public void infoSearch(Scanner scanner) throws SQLException {
+    public void infoSearch(Scanner scanner) {
         System.out.println("Please, choice act: " +
-                "\n 1.Show specific car." +
+                "\n 1.Show specific cars." +
                 "\n 2.Show all cars" +
                 "\n 3.Exit to main menu.");
 
@@ -83,7 +83,7 @@ public class Info {
 
     }
 
-    public void infoUpdate(Scanner scanner) throws SQLException{
+    public void infoUpdate(Scanner scanner) {
         System.out.println("Please, choice act: " +
                 "\n 1. Show all cars." +
                 "\n 2. Update color." +
@@ -129,6 +129,37 @@ public class Info {
                 status = "exit";
         }
 
+    }
+
+    public void infoDelete(Scanner scanner) {
+        System.out.println("Please, choice act:" +
+                "\n 1.Show all cars" +
+                "\n 2.Delete specific car" +
+                "\n 3.Exit to main menu");
+
+        int result = checkValidation(scanner);
+
+        switch (result) {
+            case 1:
+                selectData.showAll();
+                break;
+            case 2:
+                selectData.showAll();
+                try {
+                    System.out.println("Enter id");
+                    int id = Integer.parseInt(scanner.next());
+                    Delete delete = new Delete(id);
+                    delete.delete();
+                } catch (NumberFormatException e) {
+                    System.out.println("Incorrect id");
+                    status = "fail";
+                }
+            case 3:
+                status = "exit";
+                break;
+            default:
+                System.out.println("Invalid number!");
+        }
     }
 
 
